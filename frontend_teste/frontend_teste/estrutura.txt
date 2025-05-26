@@ -1,0 +1,14 @@
+.
+├── eslint.config.js
+├── estrutura.txt
+├── index.html
+├── jsconfig.json
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+├── README.md
+├── src
+└── vite.config.js
+
+3 directories, 8 files

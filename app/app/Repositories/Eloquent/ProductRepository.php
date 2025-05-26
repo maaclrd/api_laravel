@@ -22,10 +22,12 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
 
     public function setFindAllFilters(Filter $filter, Model $model): Builder
     {
+        $operator = \DB::getDriverName() === 'pgsql' ? 'ilike' : 'like';
+        
         return $model
             ->when(!empty($filter->get('name')), function ($q) use ($filter) {
                 $name = is_string($filter->get('name')) ? $filter->get('name') : '';
-                return $q->where('name', 'ilike', '%' . $name . '%');
+                return $q->where('name', 'like', '%' . $name . '%');
             })
             ->when(!empty($filter->get('price_min')), function ($q) use ($filter) {
                 return $q->where('price', '>=', $filter->get('price_min'));
