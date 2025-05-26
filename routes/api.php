@@ -19,14 +19,3 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('products', ProductController::class);
     Route::patch('products/{id}/restore', [ProductController::class, 'restore']); 
 });
-
-/*
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
-use App\Http\Controllers\Api\ProductController; */
-
-
-

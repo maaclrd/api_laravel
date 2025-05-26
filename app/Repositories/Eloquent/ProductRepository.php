@@ -25,6 +25,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $operator = \DB::getDriverName() === 'pgsql' ? 'ilike' : 'like';
         
         return $model
+            ->withTrashed()
             ->when(!empty($filter->get('name')), function ($q) use ($filter) {
                 $name = is_string($filter->get('name')) ? $filter->get('name') : '';
                 return $q->where('name', 'like', '%' . $name . '%');
