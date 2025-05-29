@@ -1,66 +1,166 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📦 Teste Técnico - Gerenciamento de Produtos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicativo web desenvolvido em **Laravel 11 + Vue 3 + Docker** para o gerenciamento de produtos, com foco em arquitetura limpa, boas práticas, testes automatizados e autenticação via token.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Tecnologias Utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Backend:
+- **Laravel 11** – Framework principal
+- **Docker** – Ambiente isolado de desenvolvimento
+- **MySQL** – Banco de dados relacional
+- **Laravel Sanctum** – Autenticação com token
+- **PHPUnit** – Testes unitários e de feature
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Frontend:
+- **Vue.js 3** – Framework JavaScript
+- **Pinia** – Gerenciamento de estado
+- **Axios** – Requisições HTTP
+- **Vite** – Ferramenta de build moderna
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📂 Estrutura do Projeto
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```
+laravel_docker/
+├── app/
+│   ├── Http/Controllers/Api/
+│   ├── Services/
+│   ├── Repositories/Contracts/
+│   ├── Repositories/Eloquent/
+│   ├── Models/
+│   └── Exceptions/
+├── database/
+│   ├── factories/
+│   ├── migrations/
+│   └── seeders/
+├── routes/
+│   └── api.php
+├── tests/
+│   ├── Feature/
+│   └── Unit/Services/
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+frontend_teste/
+├── src/
+│   ├── pages/
+│   ├── views/
+│   ├── components/
+│   ├── stores/
+│   └── router/
+```
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Instalação e Execução
 
-### Premium Partners
+### Pré-requisitos:
+- Docker + Docker Compose
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Clonagem:
 
-## Contributing
+```bash
+git clone https://github.com/maaclrd/api_laravel.git
+cd laravel_docker
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Backend (Laravel):
 
-## Code of Conduct
+```bash
+docker-compose up -d
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Acesse o container
+docker-compose exec app bash
 
-## Security Vulnerabilities
+# Instale dependências
+composer install
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Configure o ambiente
+cp .env.example .env
+php artisan key:generate
 
-## License
+# Execute as migrations e seeds
+php artisan migrate --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Frontend (Vue 3):
+
+```bash
+cd frontend_teste
+npm install
+npm run dev
+```
+
+Acesse:
+
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- API: [http://localhost:8000/api](http://localhost:8000/api)
+
+---
+
+## 🔐 Autenticação
+
+Login retorna um token JWT via Sanctum.
+
+Usuário padrão criado via seeder:
+
+```json
+{
+  "email": "admin@example.com",
+  "password": "senha123"
+}
+```
+
+As rotas protegidas exigem o header:
+
+```
+Authorization: Bearer {token}
+```
+
+---
+
+## ✅ Testes Automatizados
+
+### Para rodar todos os testes:
+
+```bash
+docker-compose exec app bash
+php artisan migrate:fresh --env=testing
+php artisan test
+```
+
+### Para testes específicos:
+
+```bash
+php artisan test --filter=ProductServiceTest
+php artisan test --filter=ProductFeatureTest
+```
+
+**Cobertura:**
+
+- Unitários: `ProductServiceTest`
+- Feature: `ProductFeatureTest`
+
+---
+
+## 🧪 Funcionalidades Implementadas
+
+- Login com token (Sanctum)
+- CRUD de produtos com Soft Delete
+- Filtros por nome, preço mínimo/máximo e estoque
+- Paginação e ordenação
+- Validações no frontend e backend
+- Testes unitários e de integração
+
+---
+
+## 📌 Extras
+
+- Estrutura baseada em Service/Repository
+- Aplicação dos princípios **SOLID** e **Clean Code**
+- Commits semânticos (`feat:`, `fix:`, `test:` etc.)
+
+---
+
+> Desenvolvido para fins de avaliação técnica. Em caso de dúvidas, fico à disposição.
