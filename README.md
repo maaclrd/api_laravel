@@ -1,33 +1,32 @@
-📦 Teste Técnico - Gerenciamento de Produtos
-Aplicativo web desenvolvido em Laravel 11 + Vue 3 + Docker para o gerenciamento de produtos, com foco em arquitetura limpa, boas práticas, testes automatizados e autenticação via token.
+# 🎞️ Teste Técnico - Gerenciamento de Produtos
 
-🚀 Tecnologias Utilizadas
-Backend:
-Laravel 11 – Framework principal
+Aplicativo web desenvolvido em **Laravel 11 + Vue 3 + Docker** para o gerenciamento de produtos, com foco em arquitetura limpa, boas práticas, testes automatizados e autenticação via token.
 
-Docker + Docker Compose – Ambiente isolado de desenvolvimento
+---
 
-MySQL 8 – Banco de dados
+## 🚀 Tecnologias Utilizadas
 
-Laravel Sanctum – Autenticação via token
+### Backend:
 
-PHPUnit – Testes unitários e de feature
+* **Laravel 11** – Framework principal
+* **Docker + Docker Compose** – Ambiente isolado de desenvolvimento
+* **MySQL 8** – Banco de dados
+* **Laravel Sanctum** – Autenticação via token
+* **PHPUnit** – Testes unitários e de feature
 
-Frontend:
-Vue.js 3 – Framework JavaScript moderno
+### Frontend:
 
-Pinia – Gerenciamento de estado
+* **Vue.js 3** – Framework JavaScript moderno
+* **Pinia** – Gerenciamento de estado
+* **Axios** – Requisições HTTP
+* **Vuetify** – Componentes UI
+* **Vite** – Bundler rápido e moderno
 
-Axios – Requisições HTTP
+---
 
-Vuetify – Componentes UI
+## 📂 Estrutura do Projeto
 
-Vite – Bundler rápido e moderno
-
-📂 Estrutura do Projeto
-swift
-Copiar
-Editar
+```bash
 laravel_docker/
 ├── app/
 │   ├── Http/Controllers/Api/
@@ -53,22 +52,27 @@ frontend_teste/
 │   ├── components/
 │   ├── stores/
 │   └── router/
-🛠️ Instalação e Execução
-Pré-requisitos:
-Docker instalado
+```
 
-Node.js instalado (para o frontend)
+---
 
-1️⃣ Clonagem:
-bash
-Copiar
-Editar
+## 🛠️ Instalação e Execução
+
+### Pré-requisitos:
+
+* Docker instalado
+* Node.js instalado (para o frontend)
+
+### 1️⃣ Clonagem:
+
+```bash
 git clone https://github.com/maaclrd/api_laravel.git
 cd laravel_docker
-2️⃣ Backend (Laravel via Docker):
-bash
-Copiar
-Editar
+```
+
+### 2️⃣ Backend (Laravel via Docker):
+
+```bash
 # Copia o arquivo de variáveis de ambiente
 cp .env.example .env
 
@@ -86,66 +90,80 @@ docker exec -it laravel_app php artisan migrate --seed
 
 # Inicia o servidor Laravel (se necessário)
 docker exec -it laravel_app php artisan serve --host=0.0.0.0 --port=8000
-3️⃣ Frontend (Vue 3):
-bash
-Copiar
-Editar
+```
+
+### 3️⃣ Frontend (Vue 3):
+
+```bash
 cd frontend_teste
 npm install
 npm run dev
-🌐 Acesso
-Frontend: http://localhost:5173
+```
 
-API Backend: http://localhost:8000/api
+---
 
-🔐 Autenticação
+## 🌐 Acesso
+
+* Frontend: [http://localhost:5173](http://localhost:5173)
+* API Backend: [http://localhost:8000/api](http://localhost:8000/api)
+
+---
+
+## 🔐 Autenticação
+
 Login via Laravel Sanctum. Após autenticação, é retornado um token Bearer.
 
 Usuário padrão criado pelo seeder:
 
-json
-Copiar
-Editar
+```json
 {
   "email": "admin@example.com",
   "password": "senha123"
 }
+```
+
 Use este token no cabeçalho para rotas protegidas:
 
-css
-Copiar
-Editar
+```
 Authorization: Bearer {token}
-✅ Testes Automatizados
-Executar todos os testes:
-bash
-Copiar
-Editar
+```
+
+---
+
+## ✅ Testes Automatizados
+
+### Executar todos os testes:
+
+```bash
 docker exec -it laravel_app php artisan test
-Executar testes específicos:
-bash
-Copiar
-Editar
+```
+
+### Executar testes específicos:
+
+```bash
 php artisan test --filter=ProductServiceTest
 php artisan test --filter=ProductFeatureTest
-🧪 Funcionalidades Implementadas
-Login com token via Sanctum
+```
 
-CRUD completo de produtos com Soft Delete
+---
 
-Paginação, ordenação e filtros (nome, preço, estoque)
+## 🧪 Funcionalidades Implementadas
 
-Validações no frontend e backend
+* Login com token via Sanctum
+* CRUD completo de produtos com Soft Delete
+* Paginação, ordenação e filtros (nome, preço, estoque)
+* Validações no frontend e backend
+* Testes automatizados (unitários e de feature)
 
-Testes automatizados (unitários e de feature)
+---
 
-📌 Extras
-Estrutura desacoplada por camadas: Controllers, Services, Repositories
+## 📌 Extras
 
-Aplicação de boas práticas com SOLID e Clean Code
+* Estrutura desacoplada por camadas: Controllers, Services, Repositories
+* Aplicação de boas práticas com **SOLID** e **Clean Code**
+* Commits com convenção semântica (`feat:`, `fix:`, `test:` etc.)
 
-Commits com convenção semântica (feat:, fix:, test: etc.)
+---
 
-Projeto desenvolvido para fins de avaliação técnica.
-Em caso de dúvidas, entre em contato. Estou à disposição.
-
+> Projeto desenvolvido para fins de avaliação técnica.
+> Em caso de dúvidas, entre em contato. Estou à disposição.
