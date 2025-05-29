@@ -1,29 +1,33 @@
-# 📦 Teste Técnico - Gerenciamento de Produtos
+📦 Teste Técnico - Gerenciamento de Produtos
+Aplicativo web desenvolvido em Laravel 11 + Vue 3 + Docker para o gerenciamento de produtos, com foco em arquitetura limpa, boas práticas, testes automatizados e autenticação via token.
 
-Aplicativo web desenvolvido em **Laravel 11 + Vue 3 + Docker** para o gerenciamento de produtos, com foco em arquitetura limpa, boas práticas, testes automatizados e autenticação via token.
+🚀 Tecnologias Utilizadas
+Backend:
+Laravel 11 – Framework principal
 
----
+Docker + Docker Compose – Ambiente isolado de desenvolvimento
 
-## 🚀 Tecnologias Utilizadas
+MySQL 8 – Banco de dados
 
-### Backend:
-- **Laravel 11** – Framework principal
-- **Docker** – Ambiente isolado de desenvolvimento
-- **MySQL** – Banco de dados relacional
-- **Laravel Sanctum** – Autenticação com token
-- **PHPUnit** – Testes unitários e de feature
+Laravel Sanctum – Autenticação via token
 
-### Frontend:
-- **Vue.js 3** – Framework JavaScript
-- **Pinia** – Gerenciamento de estado
-- **Axios** – Requisições HTTP
-- **Vite** – Ferramenta de build moderna
+PHPUnit – Testes unitários e de feature
 
----
+Frontend:
+Vue.js 3 – Framework JavaScript moderno
 
-## 📂 Estrutura do Projeto
+Pinia – Gerenciamento de estado
 
-```
+Axios – Requisições HTTP
+
+Vuetify – Componentes UI
+
+Vite – Bundler rápido e moderno
+
+📂 Estrutura do Projeto
+swift
+Copiar
+Editar
 laravel_docker/
 ├── app/
 │   ├── Http/Controllers/Api/
@@ -49,118 +53,99 @@ frontend_teste/
 │   ├── components/
 │   ├── stores/
 │   └── router/
-```
+🛠️ Instalação e Execução
+Pré-requisitos:
+Docker instalado
 
----
+Node.js instalado (para o frontend)
 
-## 🛠️ Instalação e Execução
-
-### Pré-requisitos:
-- Docker + Docker Compose
-
-### Clonagem:
-
-```bash
+1️⃣ Clonagem:
+bash
+Copiar
+Editar
 git clone https://github.com/maaclrd/api_laravel.git
 cd laravel_docker
-```
-
-### Backend (Laravel):
-
-```bash
-docker-compose up -d
-
-# Acesse o container
-docker-compose exec app bash
-
-# Instale dependências
-composer install
-
-# Configure o ambiente
+2️⃣ Backend (Laravel via Docker):
+bash
+Copiar
+Editar
+# Copia o arquivo de variáveis de ambiente
 cp .env.example .env
-php artisan key:generate
 
-# Execute as migrations e seeds
-php artisan migrate --seed
-```
+# Sobe os containers com build
+docker-compose up -d --build
 
-### Frontend (Vue 3):
+# Instala as dependências
+docker exec -it laravel_app composer install
 
-```bash
+# Gera a chave da aplicação
+docker exec -it laravel_app php artisan key:generate
+
+# Executa as migrations e seeders
+docker exec -it laravel_app php artisan migrate --seed
+
+# Inicia o servidor Laravel (se necessário)
+docker exec -it laravel_app php artisan serve --host=0.0.0.0 --port=8000
+3️⃣ Frontend (Vue 3):
+bash
+Copiar
+Editar
 cd frontend_teste
 npm install
 npm run dev
-```
+🌐 Acesso
+Frontend: http://localhost:5173
 
-Acesse:
+API Backend: http://localhost:8000/api
 
-- Frontend: [http://localhost:5173](http://localhost:5173)
-- API: [http://localhost:8000/api](http://localhost:8000/api)
+🔐 Autenticação
+Login via Laravel Sanctum. Após autenticação, é retornado um token Bearer.
 
----
+Usuário padrão criado pelo seeder:
 
-## 🔐 Autenticação
-
-Login retorna um token JWT via Sanctum.
-
-Usuário padrão criado via seeder:
-
-```json
+json
+Copiar
+Editar
 {
   "email": "admin@example.com",
   "password": "senha123"
 }
-```
+Use este token no cabeçalho para rotas protegidas:
 
-As rotas protegidas exigem o header:
-
-```
+css
+Copiar
+Editar
 Authorization: Bearer {token}
-```
-
----
-
-## ✅ Testes Automatizados
-
-### Para rodar todos os testes:
-
-```bash
-docker-compose exec app bash
-php artisan migrate:fresh --env=testing
-php artisan test
-```
-
-### Para testes específicos:
-
-```bash
+✅ Testes Automatizados
+Executar todos os testes:
+bash
+Copiar
+Editar
+docker exec -it laravel_app php artisan test
+Executar testes específicos:
+bash
+Copiar
+Editar
 php artisan test --filter=ProductServiceTest
 php artisan test --filter=ProductFeatureTest
-```
+🧪 Funcionalidades Implementadas
+Login com token via Sanctum
 
-**Cobertura:**
+CRUD completo de produtos com Soft Delete
 
-- Unitários: `ProductServiceTest`
-- Feature: `ProductFeatureTest`
+Paginação, ordenação e filtros (nome, preço, estoque)
 
----
+Validações no frontend e backend
 
-## 🧪 Funcionalidades Implementadas
+Testes automatizados (unitários e de feature)
 
-- Login com token (Sanctum)
-- CRUD de produtos com Soft Delete
-- Filtros por nome, preço mínimo/máximo e estoque
-- Paginação e ordenação
-- Validações no frontend e backend
-- Testes unitários e de integração
+📌 Extras
+Estrutura desacoplada por camadas: Controllers, Services, Repositories
 
----
+Aplicação de boas práticas com SOLID e Clean Code
 
-## 📌 Extras
+Commits com convenção semântica (feat:, fix:, test: etc.)
 
-- Estrutura baseada em Service/Repository
-- Aplicação dos princípios **SOLID** e **Clean Code**
-- Commits semânticos (`feat:`, `fix:`, `test:` etc.)
+Projeto desenvolvido para fins de avaliação técnica.
+Em caso de dúvidas, entre em contato. Estou à disposição.
 
----
-
-> Desenvolvido para fins de avaliação técnica. Em caso de dúvidas, fico à disposição.
